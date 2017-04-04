@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Det vesle Helikopteret</title>
+
+    </head>
+
+    <style>
+        
+        html, body{
+            margin: 0;
+        }
+    
+        #container{
+            position: relative;
+            height: 640px;
+            width: 10000px;
+            background-color: lightsteelblue;
+            margin: 0;
+        }
+        
+        #container * {
+            position: absolute;
+        }
+        
+        @keyframes helikopter{
+            0%{
+                bottom: 20px;
+                transform: rotate(0deg);
+                left: 20px;
+            }
+            5%{
+                bottom: 400px;
+                transform: rotate(30deg);
+                left: 20px;
+            }
+            95%{
+                bottom: 400px;
+                transform: rotate(30deg);
+                left: 9800px;
+            }
+            100%{
+                bottom: 20px;
+                transform: rotate(0deg);
+                left: 9800px;
+            }
+        }
+        
+        
+        #helikopter{
+            height: 70px;
+            width: 140px;
+            bottom: 20px;
+            left: 20px;
+            animation-name: helikopter;
+            animation-duration: 70s;
+            animation-fill-mode: forwards;
+        }
+        
+        #bakken{
+            height: 20px;
+            width: 10000px;
+            bottom: 0;
+            background-color: darkgoldenrod;
+        }
+    
+        
+        /*Snømannen er bygget av to "snowball" og to øyne*/
+        
+        #snowball{
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            left: 7000px;
+            bottom: 10px;
+        }
+        
+         #snowball2{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            left: 7020px;
+            bottom: 150px;
+        }
+        
+        #venstreOye{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            bottom: 200px;
+            left: 7085px;
+            background-color: black;
+            border: 3px solid lightgrey;
+        }
+        
+          #hoyreOye{
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            bottom: 200px;
+            left: 7055px;
+            background-color: black;
+            border: 3px solid lightgrey;
+        }
+        
+        #snow{
+            color: white;
+            font-size: 2em;
+            top: -20px;
+            left: 6000px;
+            margin: 0;
+            padding: 0;
+            animation: snow;
+            animation-duration: 10s;
+            animation-delay: 0;
+            animation-timing-function: ease-out;
+            animation-iteration-count: infinite;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes snow {
+            0%{
+                opacity: 0;
+                top: 0px;
+                left: 6000px;
+            }
+            25%{
+                opacity: 1;
+                top: 50px;
+                left: 6100px;
+            }
+            50%{
+                opacity: 0.5;
+                top: 100px;
+                left: 6000px;
+            }
+            75%{
+                opacity: 1;
+                top: 150px;
+                left: 6100px;
+            }
+            100%{
+                opacity: 0;
+                top: 200px;
+                left: 6050px;
+            }
+        }
+        
+        #sol{
+            background-color: coral;
+            opacity: 0.8;
+            position: fixed;
+            transition-property: all;
+            transition-delay: 0s;
+            transition-duration: 2s;
+            transition-timing-function: ease-in-out;
+        }
+        
+        #moon{
+            opacity: 1;
+            position: fixed;
+        }
+        
+        .SunMoon{
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            left: 800px;
+            top: 100px;
+        }
+        
+        .instrukser{
+            font-family: cursive;
+            font-size: 2em;
+            color:antiquewhite;
+            padding-left: 10px;
+        }
+        
+        #moonInstruks{
+            right: 20px;
+        }
+        
+        #fjell{
+            width: 1000px;
+            height: auto;
+            bottom: 20px;
+            left: 2000px;
+        }
+        
+        #liteFjell{
+            width: 500px;
+            height: auto;
+            bottom: 40px;
+            left: 2650px;
+            opacity: 0.5;
+        }
+        
+        #fjellSpeilvendt{
+            width: 1300px;
+            height: auto;
+            bottom: 20px;
+            left: 3000px;
+            transform: scaleX(-1);
+        }
+        
+        #skyer{
+            background-image: url(GitteBilder/cloud.png);
+            height: 440px;
+            width: 1600px;
+            top: 20px;
+            left: 4800px;
+            opacity: 0.8;
+        }
+        
+        #herBoks{
+            border-radius: 20%;
+            width: 55px;
+            height: 50px;
+            right: 855px;
+            top: 20px;
+            border: 6px solid lightslategray;
+        }
+        
+        #herBoks:hover ~ #sol{
+           opacity: 0;
+        }
+        
+        #SnowmanSays{
+            left: 7120px;
+            bottom: 200px;
+            font-size: 1.5em;
+            opacity: 0;
+            transition-property: all;
+            transition-delay: 0s;
+            transition-duration: 2s;
+            transition-timing-function: step-start;
+        }
+        
+        #snowball:hover ~ #SnowmanSays{
+            opacity: 1;
+        }
+        
+    </style>
+    
+    
+    
+
+<body>
+
+    <div id="container">
+
+        
+        
+        <pre class="instrukser" id="startInstruks">Følg det vesle helikopteret på sin ferd ved å scrolle fremover</pre>
+        
+        <pre class="instrukser" id="moonInstruks">Pek her for at månen skal titte frem, og det vesle helikopteret 
+                                                                              kan få sove 
+                                                                                  etter en 
+                                                                                      laaaaang 
+                                                                                            tur </pre>
+        
+
+        
+        <img id="snowball2" src="GitteBilder/frosty.png">
+        
+       
+        
+        <img id="snowball" src="GitteBilder/frosty.png">
+        
+         <pre class="instrukser" id="SnowmanSays">God tur, 
+vesle helikopter!</pre>
+        
+        <div id="venstreOye"></div>
+        <div id="hoyreOye"></div>
+        
+        <div id="bakken"></div>
+        
+        <img id="liteFjell" src="GitteBilder/mount-fuji.png">
+        <img id="fjell" src="GitteBilder/mount-fuji.png">
+        <img id="fjellSpeilvendt" src="GitteBilder/mount-fuji.png">
+        
+        <div id="herBoks"></div>
+        
+        <img class="SunMoon" id="moon" src="GitteBilder/moon.png">
+        
+        <div class="SunMoon" id="sol"></div>
+        
+       
+        
+        <img id="helikopter" src="GitteBilder/helicopter2.png">
+        
+        <pre id="snow">*    *       *     *     *        *   *           *       *    *       *        *   *         *            *     *    *     
+                     
+     *    *    *     *    *     *    *  *     *    *    *    *       *    * *     * *       *   *     *   *       *    * *     * *       *   *    
+                     
+     *    *    *     *    *     *    *  *     *    *      *    *       *    * *     * *       *   *     *   *  *     *    *    *    *     *
+                     
+     *    *    *     *    *     *    *  *     *    *     *    *       *    * *     * *       *   *     *      *  *     *    *    *    *         *
+     
+        *    *    *     *    *     *    *  *     *    *    *    *       *    * *     * *       *   *     *   *       *    * *     * *       *   *    
+                     
+     *    *    *     *    *     *    *  *     *    *      *    *       *    * *     * *       *   *     *   *  *     *    *    *    *     *
+                     
+     *    *             *       *          *    *     *    *       *             * *       *   *     *          *     *          *    *         *
+        </pre>
+        
+        <div id="skyer"></div>
+        
+    </div>
+
+</body>
+</html>
